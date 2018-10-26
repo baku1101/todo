@@ -4,7 +4,7 @@ import pickle
 import os
 import datetime
 
-SAVEFILE = 'save'
+SAVEFILE = 'todo.save'
 
 def create_new_task():
     name = input('タスク名を入力: ')
