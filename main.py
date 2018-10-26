@@ -7,7 +7,7 @@ import os
 
 def find_top_priority_task():
     if (not add_new_task.SAVEFILE in os.listdir('./')) or (add_new_task.load() == []):
-        print('タスクがないため、新しいタスクを登録します。')
+        print('タスクがありません！新しく登録する時はadd_new_taskを実行してください。')
         add_new_task.add_new_task()
     data_list = add_new_task.load()
     top_task = data_list[0]
@@ -25,7 +25,7 @@ def set_timer(task):
         timer_foriOS.countup_timer(time)
     else:
         import timer_forPC
-        time = input('時間セット(hms): ')
+        time = input('時間のセット(hms): ')
         name = task['name']
         timer = timer_forPC.App(time,name)
 
