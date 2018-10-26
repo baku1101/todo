@@ -8,7 +8,7 @@ import os
 def find_top_priority_task():
     if (not add_new_task.SAVEFILE in os.listdir('./')) or (add_new_task.load() == []):
         print('タスクがありません！新しく登録する時はadd_new_taskを実行してください。')
-        add_new_task.add_new_task()
+        exit(0)
     data_list = add_new_task.load()
     top_task = data_list[0]
     for data_dict in data_list:
