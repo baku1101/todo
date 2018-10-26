@@ -28,6 +28,7 @@ def load():
             data_list = pickle.load(savefile)
             return data_list
     else:
+        save([])
         return []
 
 def add_new_task():

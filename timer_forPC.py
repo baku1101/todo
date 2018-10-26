@@ -88,9 +88,10 @@ class App():
     self.canvas.itemconfig(self.progress, start=450-extent, extent=extent)
     self.time -= 1.0 / self.fps
     if self.time < 0:
-      if self.option.notify:
-        print('\a')
-      sys.exit()
+      self.root.destroy()
+      #if self.option.notify:
+      #  print('\a')
+      #sys.exit()
     self.root.after(int(1000 / self.fps), self.update)
 
   def run(self):
