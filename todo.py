@@ -8,7 +8,7 @@ import os
 import sys
 
 def find_top_priority_task():
-    if (not add_new_task.SAVEFILE in os.listdir('./')) or (add_new_task.load() == []):
+    if (not os.path.exists(add_new_task.SAVEFILE)) or (add_new_task.load() == []):
         print('タスクがありません！新しく登録する時はadd_new_taskを実行してください。')
         sys.exit()
     data_list = add_new_task.load()

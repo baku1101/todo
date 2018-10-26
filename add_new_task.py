@@ -24,7 +24,7 @@ def save(data_list):
         pickle.dump(data_list,savefile)
 
 def load():
-    if SAVEFILE in os.listdir('./'):
+    if os.path.exists(SAVEFILE):
         with open(SAVEFILE, 'rb') as savefile:
             data_list = pickle.load(savefile)
             return data_list
