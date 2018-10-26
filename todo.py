@@ -5,11 +5,12 @@ import datetime
 import add_new_task
 import argparse
 import os
+import sys
 
 def find_top_priority_task():
     if (not add_new_task.SAVEFILE in os.listdir('./')) or (add_new_task.load() == []):
         print('タスクがありません！新しく登録する時はadd_new_taskを実行してください。')
-        exit(0)
+        sys.exit()
     data_list = add_new_task.load()
     top_task = data_list[0]
     for data_dict in data_list:
@@ -45,7 +46,7 @@ def show():
     print('現在のタスク数: {}'.format(len(data_list)))
     for data_dict in data_list:
         print('name: {0}, limit: {1}'.format(data_dict['name'],data_dict['datetime']))
-    exit(0)
+    sys.exit()
 
 
 if __name__ == '__main__':

@@ -9,4 +9,4 @@ timer_forPC.py:タイマー。[ターミナルから起動できる簡易タイ�
 
 timer_foriOS.py:iOSアプリのpythonistaから呼び出した時に実行される。とても手抜き。
 
-todo.save:タスクのセーブファイル。pickleでバイナリファイルに保存している。
+todo.save:タスクのセーブファイル。pickleでバイナリファイルに保存している。$HOME/.config/todo/以下に保存する(無かったら自分で作る仕様)

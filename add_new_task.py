@@ -3,8 +3,9 @@
 import pickle
 import os
 import datetime
+import sys
 
-SAVEFILE = 'todo.save'
+SAVEFILE = os.environ['HOME'] + '/.config/todo/todo.save'
 
 def create_new_task():
     name = input('タスク名を入力: ')
@@ -42,6 +43,6 @@ if __name__ == '__main__':
     while True:
         add_new_task()
         if input('続けてタスクを登録しますか? y/n :') == 'n':
-            exit(0)
+            sys.exit()
         else:
             pass
