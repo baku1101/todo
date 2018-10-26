@@ -24,9 +24,10 @@ def set_timer(task):
         time = timer_foriOS.get_time()
         timer_foriOS.countup_timer(time)
     else:
+        import timer_forPC
         time = input('時間セット(hms): ')
         name = task['name']
-        os.system('python3 timer_forPC.py {0} -t {1}'.format(time,name))
+        timer = timer_forPC.App(time,name)
 
 def remove_task(task):
     data_list = add_new_task.load()
