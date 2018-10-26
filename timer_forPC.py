@@ -6,12 +6,13 @@ import argparse
 import random
 import tkinter as tk
 
-class App():
+class App(period,title):
   def __init__(self):
     self.window_size = 150
     self.fps = 10
     self.font_size = 23
-    self.option = self.parse_args()
+    self.option.period = period
+    self.option.title = title
     self.time = self.get_timesec()
     self.period = self.time
     self.root = self.set_root()
@@ -21,12 +22,13 @@ class App():
     self.update()
     self.run()
 
-  def parse_args(self):
-    parser = argparse.ArgumentParser(description="Show simple countdown timer on desktop.")
-    parser.add_argument("period", action="store", type=str, help="Set period for your timer.")
-    parser.add_argument("-t", dest="title", action="store", default="Timer", help="Set title for your timer.")
-    parser.add_argument("-n", dest="notify", action="store_false", default=True, help="Disable notification.")
-    return parser.parse_args()
+#  def parse_args(self):
+#    parser = argparse.ArgumentParser(description="Show simple countdown timer on desktop.")
+#    parser.add_argument("period", action="store", type=str, help="Set period for your timer.")
+#    parser.add_argument("-t", dest="title", action="store", default="Timer", help="Set title for your timer.")
+#    parser.add_argument("-n", dest="notify", action="store_false", default=True, help="Disable notification.")
+#    print(parser.parse_args().period)
+#    return parser.parse_args()
 
   def get_timesec(self):
     if re.search("\A(?:\d+h)?(?:\d+m)?(?:\d+s)?$", self.option.period) is None:
@@ -101,4 +103,3 @@ class App():
   def run(self):
     self.root.mainloop()
 
-app = App()
