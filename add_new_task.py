@@ -40,7 +40,7 @@ def add_new_task():
 if __name__ == '__main__':
     while True:
         add_new_task()
-        if input('続けてタスクを登録しますか? y/n :') == n:
+        if input('続けてタスクを登録しますか? y/n :') == 'n':
             exit(0)
         else:
             pass
