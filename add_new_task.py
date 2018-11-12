@@ -4,6 +4,8 @@ import pickle
 import os
 import datetime
 import sys
+if (not os.uname()[1] in ['iPhone','iPad']):
+    import readline
 
 SAVEFILE = os.environ['HOME'] + '/.config/todo/todo.save'
 

@@ -20,7 +20,6 @@ def find_top_priority_task():
     return top_task
 
 def set_timer(task):
-    import os
     if os.uname()[1] in ['iPhone','iPad']:
         import timer_foriOS
         time = timer_foriOS.get_time()
