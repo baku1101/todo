@@ -4,6 +4,8 @@ import pickle
 import os
 import datetime
 import sys
+if (not os.uname()[1] in ['iPhone','iPad']):
+    import readline
 
 SAVEFILE = os.environ['HOME'] + '/.config/todo/todo.save'
 
@@ -38,7 +40,7 @@ def add_new_task():
     data_list = load()
     data_list.append(data_dict)
     save(data_list)
-    
+
 if __name__ == '__main__':
     while True:
         add_new_task()
