@@ -8,15 +8,21 @@ import sys
 SAVEFILE = os.environ['HOME'] + '/.config/todo/todo.save'
 
 def create_new_task():
+    name = ''
+    limit = {'year':0, 'month':0, 'date':0, 'hour':0}
+    priority = 0
     name = input('タスク名を入力: ')
     print('期限の入力↓')
-    limit = {'year':0, 'month':0, 'date':0, 'hour':0}
     limit['year'] = int(input('year: '))
     limit['month'] = int(input('month: '))
     limit['date'] = int(input('date: '))
     limit['hour'] = int(input('hour: '))
+    priority = int(input('重要度の入力(1-3): '))
     dt = datetime.datetime(limit['year'],limit['month'],limit['date'],limit['hour'])
-    data_dict = {'name':name,'datetime':dt}
+    if !(priority in [1,2,3]):
+        print('invalid value of priority: expect 1, 2 or 3')
+        sys.exit(1)
+    data_dict = {'name':name,'datetime':dt,'priority':priority}
     return data_dict
 
 def save(data_list):
@@ -38,7 +44,7 @@ def add_new_task():
     data_list = load()
     data_list.append(data_dict)
     save(data_list)
-    
+
 if __name__ == '__main__':
     while True:
         add_new_task()
