@@ -7,12 +7,15 @@ import sys
 if (not os.uname()[1] in ['iPhone','iPad']):
     import readline
 
+SAVEFILE = ''
+
 def set_savefile_env():
     if os.environ.get('TODOSAVE') == None:
-        print('環境変数"TODOSAVE"を設定してください')
+        print('環境変数"TODOSAVE"を設定してください\n(相対パスだと動かない?)')
         sys.exit(1)
     else:
-        SAVEFILE = os.environ.get('TODOSAVE')
+        global SAVEFILE
+        SAVEFILE = os.environ.get('TODOSAVE') + 'todo.save'
 
 def create_new_task():
     name = input('タスク名を入力: ')
@@ -31,7 +34,7 @@ def save(data_list):
         pickle.dump(data_list,savefile)
 
 def load():
-    if os.path.exists(SAVEFILE):
+    if os.path.isfile(SAVEFILE):
         with open(SAVEFILE, 'rb') as savefile:
             data_list = pickle.load(savefile)
             return data_list
