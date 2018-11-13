@@ -7,7 +7,12 @@ import sys
 if (not os.uname()[1] in ['iPhone','iPad']):
     import readline
 
-SAVEFILE = os.environ['HOME'] + '/.config/todo/todo.save'
+def set_savefile_env():
+    if os.environ.get('TODOSAVE') == None:
+        print('環境変数"TODOSAVE"を設定してください')
+        sys.exit(1)
+    else:
+        SAVEFILE = os.environ.get('TODOSAVE')
 
 def create_new_task():
     name = input('タスク名を入力: ')
@@ -42,6 +47,7 @@ def add_new_task():
     save(data_list)
 
 if __name__ == '__main__':
+    set_savefile_env()
     while True:
         add_new_task()
         if input('続けてタスクを登録しますか? y/n :') == 'n':

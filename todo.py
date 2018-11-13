@@ -52,6 +52,7 @@ if __name__ == '__main__':
     option = parse()
     if option.show:
         show()
+    add_new_task.set_savefile_env()
     while True:
         top_task = find_top_priority_task()
         set_timer(top_task)

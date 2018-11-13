@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf8 -*-
+
+# for pythonista (iOS app)
 from time import sleep
 import os
 import sys
