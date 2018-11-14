@@ -7,7 +7,7 @@ dbx = dropbox.Dropbox('1VBymHjFksAAAAAAAAARVCi7nHzqp42BATYy8TdB2cdNtuGqRrJjCujwA
 
 def save():
     with open('./todo.save', 'rb') as f:
-        dbx.files_upload(f.read(), '/todo/todo.save')
+        dbx.files_upload(f.read(), '/todo/todo.save',mode=dropbox.files.WriteMode.overwrite)
 
 def load():
     with open('./todo.save', 'wb') as f:

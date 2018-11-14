@@ -23,7 +23,8 @@ def find_top_priority_task():
 def set_timer(task):
     if os.uname()[1] in ['iPhone','iPad']:
         import timer_foriOS
-        time = timer_foriOS.get_time()
+        str_time = timer_foriOS.get_time()
+        time = timer_foriOS.anal_str_time(str_time)
         timer_foriOS.countup_timer(time)
     else:
         import timer_forPC
@@ -53,10 +54,11 @@ if __name__ == '__main__':
     if (os.uname()[1] in ['iPhone','iPad']):
         import save_sync
         save_sync.load()
+        os.environ['TODOSAVE'] = '/private/var/mobile/Containers/Shared/AppGroup/BD1DA245-5619-467F-B9B5-34FF6EFCCDE2/Pythonista3/Documents/todo/'
+    add_new_task.set_savefile_env()
     option = parse()
     if option.show:
         show()
-    add_new_task.set_savefile_env()
     while True:
         top_task = find_top_priority_task()
         set_timer(top_task)

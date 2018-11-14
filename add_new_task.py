@@ -56,6 +56,7 @@ def add_new_task():
 if __name__ == '__main__':
     if (os.uname()[1] in ['iPhone','iPad']):
         save_sync.load()
+        os.environ['TODOSAVE'] = '/private/var/mobile/Containers/Shared/AppGroup/BD1DA245-5619-467F-B9B5-34FF6EFCCDE2/Pythonista3/Documents/todo/'
     set_savefile_env()
     while True:
         add_new_task()
