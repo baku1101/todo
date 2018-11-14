@@ -30,10 +30,12 @@ def create_new_task():
     return data_dict
 
 def save(data_list):
+    global SAVEFILE
     with open(SAVEFILE, 'wb') as savefile:
         pickle.dump(data_list,savefile)
 
 def load():
+    global SAVEFILE
     if os.path.isfile(SAVEFILE):
         with open(SAVEFILE, 'rb') as savefile:
             data_list = pickle.load(savefile)
