@@ -2,10 +2,11 @@
 # -*- coding: utf8 -*-
 import pickle
 import datetime
-import add_new_task
 import argparse
 import os
 import sys
+
+import add_new_task
 
 def find_top_priority_task():
     if (not os.path.exists(add_new_task.SAVEFILE)) or (add_new_task.load() == []):
@@ -49,6 +50,9 @@ def show():
 
 
 if __name__ == '__main__':
+    if (os.uname()[1] in ['iPhone','iPad']):
+        import save_sync
+        save_sync.load()
     option = parse()
     if option.show:
         show()
@@ -57,6 +61,8 @@ if __name__ == '__main__':
         top_task = find_top_priority_task()
         set_timer(top_task)
         remove_task(top_task)
+        if (os.uname()[1] in ['iPhone','iPad']):
+            save_sync.save()
         if input('新しいタスクを登録しますか? y/n : ') == 'y':
             add_new_task.add_new_task()
         else:

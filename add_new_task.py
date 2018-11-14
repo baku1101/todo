@@ -6,6 +6,8 @@ import datetime
 import sys
 if (not os.uname()[1] in ['iPhone','iPad']):
     import readline
+else:
+    import save_sync
 
 SAVEFILE = ''
 
@@ -52,10 +54,14 @@ def add_new_task():
     save(data_list)
 
 if __name__ == '__main__':
+    if (os.uname()[1] in ['iPhone','iPad']):
+        save_sync.load()
     set_savefile_env()
     while True:
         add_new_task()
         if input('続けてタスクを登録しますか? y/n :') == 'n':
+            if (os.uname()[1] in ['iPhone','iPad']):
+                save_sync.save()
             sys.exit()
         else:
             pass
