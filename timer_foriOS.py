@@ -6,6 +6,7 @@ from time import sleep
 import os
 import sys
 import re
+import notification
 
 def get_time():
     str_time = input('時間設定(hms):')
@@ -36,7 +37,7 @@ def countup_timer(time):
         sys.stdout.write('\rpassed {0}h {1}m {2}s'.format(hours,minutes,seconds))
         sys.stdout.flush()
         sleep(1)
-    print('\n終了です!')
+    notification.schedule('タスク終了です',0,'default')
 
 if __name__ == '__main__':
     str_time = get_time()
