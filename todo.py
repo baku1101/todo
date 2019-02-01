@@ -67,7 +67,7 @@ if __name__ == '__main__':
         import save_sync
         savefiles_on_dropbox = ['/todo/todo.save','/todo/todo.achieve']
         savefiles_on_device = ['./todo.save','./todo.achieve']
-        save_sync.load(savefile_on_device,savefile_on_dropbox)
+        save_sync.load(savefiles_on_device,savefiles_on_dropbox)
         set_environ_foriOS()
     add_new_task.set_savefile_env()
     add_achieve.set_achievefile_env()
@@ -81,9 +81,7 @@ if __name__ == '__main__':
         set_timer(top_task)
         remove_task(top_task)
         if (os.uname()[1] in ['iPhone','iPad']):
-            savefile_on_dropbox = '/todo/todo.save'
-            savefile_on_device = './todo.save'
-            save_sync.save(savefile_on_device,savefile_on_dropbox)
+            save_sync.save(savefiles_on_device,savefiles_on_dropbox)
         if input('新しいタスクを登録しますか? y/n : ') == 'y':
             add_new_task.add_new_task()
         if input('タスクを達成したリストに登録しますか? y/n : ') == 'y':
