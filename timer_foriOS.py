@@ -30,14 +30,11 @@ def anal_str_time(str_time):
     return time
 
 def countup_timer(time):
-    for i in range(0,time + 1):
-        hours = i // 3600
-        minutes = i // 60
-        seconds = i - hours * 3600 - minutes * 60
-        sys.stdout.write('\rpassed {0}h {1}m {2}s'.format(hours,minutes,seconds))
-        sys.stdout.flush()
-        sleep(1)
-    notification.schedule('タスク終了です',0,'default')
+    for past in range(0,time):
+        if((time - past) % 600 == 0):
+            notification.schedule('todo:残り{}分'.format((time - past)//60),past,'arcade:Coin_2')
+    notification.schedule('todo:終了です',time,'arcade:Coin_1')
+    print()
 
 if __name__ == '__main__':
     str_time = get_time()
